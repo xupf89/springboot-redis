@@ -1,15 +1,12 @@
 package com.demo.test;
 
+import com.demo.dao.RedisDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.concurrent.TimeUnit;
-
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -17,11 +14,10 @@ import java.util.concurrent.TimeUnit;
 public class TestRedis {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisDao redisDao;
 
     @Test
     public void setEx() {
-        redisTemplate.opsForValue().set("test","testValue1",20, TimeUnit.SECONDS);
-//        redisDao.setEx("set:name", "xupf001", 20);
+        redisDao.setEx("name", "coder", 20);
     }
 }
